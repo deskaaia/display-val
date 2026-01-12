@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAL Coffee – Less Noise, Better Coffee</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,600&family=Inter:wght@200;300;400;600&family=Cormorant+Garamond:ital,wght@1,300;1,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --pastel-brown: #D7C0AE;
+            --beige: #F3EFE0;
+            --broken-white: #FCFAFA;
+            --dark-brown: #2C241E; 
+            --accent: #967E76;
+            --gold: #D4AF37; /* Gold yang lebih elegan untuk latar terang */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--broken-white);
+            color: var(--dark-brown);
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+        .italic-serif { font-family: 'Cormorant Garamond', serif; font-style: italic; }
+
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-on-scroll.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-section {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .menu-card {
+            background: #ffffff;
+            overflow: hidden;
+            border-radius: 0;
+            transition: all 0.5s ease;
+        }
+        .menu-card:hover {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+        .img-zoom {
+            transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .menu-card:hover .img-zoom {
+            transform: scale(1.08);
+        }
+
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .rating-star {
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .review-text {
+            color: var(--dark-brown);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--broken-white); }
+        ::-webkit-scrollbar-thumb { background: var(--pastel-brown); }
+    </style>
+</head>
+<body>
+
+    <!-- Navigasi Premium -->
+    <nav id="mainNav" class="fixed w-full z-50 py-6 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-8 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-3xl font-semibold tracking-tighter serif">VAL</span>
+                <div class="h-8 w-px bg-dark-brown/20 mx-2 hidden md:block"></div>
+                <span class="text-[10px] uppercase tracking-[0.4em] hidden md:block font-light">Fine Coffee & Bakery</span>
+            </div>
+            <div class="hidden md:flex space-x-12 text-[11px] uppercase tracking-[0.3em] font-medium">
+                <a href="#home" class="nav-link hover:text-accent transition-colors text-dark-brown">Home</a>
+                <a href="#signature" class="nav-link hover:text-accent transition-colors text-dark-brown">Signature</a>
+                <a href="#dessert" class="nav-link hover:text-accent transition-colors text-dark-brown">Sweet</a>
+                <a href="#menu" class="nav-link hover:text-accent transition-colors text-dark-brown">Menu</a>
+                <a href="#reviews" class="nav-link hover:text-accent transition-colors text-dark-brown">Stories</a>
+            </div>
+            <div class="flex items-center">
+                <a href="https://wa.me/6282338916539" target="_blank" class="text-[11px] uppercase tracking-widest border border-dark-brown/20 px-6 py-2 hover:bg-dark-brown hover:text-white transition-all">Reservasi</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section relative flex flex-col justify-center items-center text-center text-white px-6">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="relative z-10 space-y-4">
+            <p class="text-xs md:text-sm uppercase tracking-[0.8em] font-light reveal-on-scroll">Est. 2024</p>
+            <h1 class="text-7xl md:text-[10rem] font-light leading-none tracking-tighter reveal-on-scroll" style="transition-delay: 200ms;">VAL<span class="italic-serif font-light opacity-80">Coffee</span></h1>
+            <p class="text-lg md:text-2xl italic-serif max-w-xl mx-auto opacity-90 reveal-on-scroll" style="transition-delay: 400ms;">Menemukan ketenangan dalam setiap teguhan kopi pilihan.</p>
+            <div class="pt-10 reveal-on-scroll" style="transition-delay: 600ms;">
+                <a href="#signature" class="inline-block p-4 border border-white/30 rounded-full animate-bounce">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 13l5 5 5-5M7 6l5 5 5-5"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="py-32 bg-white text-center">
+        <div class="max-w-3xl mx-auto px-6 reveal-on-scroll">
+            <span class="text-4xl serif opacity-20 block mb-6">“</span>
+            <h2 class="text-3xl md:text-5xl font-light serif leading-snug">
+                Kami percaya bahwa kopi terbaik lahir dari <span class="italic-serif text-accent">keheningan</span> dan ketelitian.
+            </h2>
+            <div class="w-12 h-px bg-pastel-brown mx-auto mt-12"></div>
+        </div>
+    </section>
+
+    <!-- Signature -->
+    <section id="signature" class="py-24 bg-beige/40">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20">
+                <div class="reveal-on-scroll">
+                    <p class="text-xs uppercase tracking-[0.4em] mb-4 text-accent">Curated Selection</p>
+                    <h2 class="text-5xl serif">Signature <br><span class="italic-serif">Collections</span></h2>
+                </div>
+                <p class="max-w-xs text-sm opacity-60 mt-6 md:mt-0 reveal-on-scroll" style="transition-delay: 200ms;">Racikan eksklusif yang hanya bisa Anda temukan di bar kami.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                <div class="menu-card reveal-on-scroll">
+                    <div class="relative overflow-hidden aspect-[4/5]">
+                        <img src="https://i.pinimg.com/736x/04/e6/99/04e69967a9b9ed51c9f37a4816b948cd.jpg" class="w-full h-full object-cover img-zoom" alt="Sea Salt Caramel">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-2xl serif">Sea Salt Caramel</h3>
+                            <span class="text-lg italic-serif">35k</span>
+                        </div>
+                        <p class="text-sm opacity-60 leading-relaxed font-light">Perpaduan espresso dengan sea salt foam yang memberikan sensasi manis-gurih.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card mt-12 reveal-on-scroll" style="transition-delay: 200ms;">
+                    <div class="relative overflow-hidden aspect-[4/5]">
+                        <img src="https://i.pinimg.com/1200x/ce/33/70/ce33708091e14eb66731a28a684016ad.jpg" class="w-full h-full object-cover img-zoom" alt="Rose Matcha">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-2xl serif">Rose Matcha</h3>
+                            <span class="text-lg italic-serif">32k</span>
+                        </div>
+                        <p class="text-sm opacity-60 leading-relaxed font-light">Teh jepang grade-A dengan ekstrak kelopak mawar organik.</p>
+                    </div>
+                </div>
+
+                <div class="menu-card reveal-on-scroll" style="transition-delay: 400ms;">
+                    <div class="relative overflow-hidden aspect-[4/5]">
+                        <img src="https://i.pinimg.com/1200x/da/29/13/da29136fb8d074f9c24b3730b9714bc1.jpg" class="w-full h-full object-cover img-zoom" alt="Still Chocolate">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="text-2xl serif">Still Chocolate</h3>
+                            <span class="text-lg italic-serif">30k</span>
+                        </div>
+                        <p class="text-sm opacity-60 leading-relaxed font-light">Biji kakao premium dari produsen lokal dengan tekstur kental.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sweet Treats -->
+    <section id="dessert" class="py-32 bg-white">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="text-center mb-20 reveal-on-scroll">
+                <p class="text-xs uppercase tracking-[0.4em] mb-4 text-accent">Freshly Baked</p>
+                <h2 class="text-5xl serif">The <span class="italic-serif">Pâtisserie</span></h2>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 border border-gray-100 reveal-on-scroll">
+                <div class="group bg-white p-10 hover:bg-beige/20 transition-all duration-700">
+                    <div class="aspect-square mb-8 overflow-hidden">
+                        <img src="https://i.pinimg.com/1200x/bd/4d/f1/bd4df14ed81d5e056c34fb310292c715.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" alt="Croissant">
+                    </div>
+                    <h3 class="text-lg serif mb-2"> Pistachio Croissant</h3>
+                    <span class="text-sm italic-serif font-bold">22k</span>
+                </div>
+                <div class="group bg-white p-10 hover:bg-beige/20 transition-all duration-700">
+                    <div class="aspect-square mb-8 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?q=80&w=600&auto=format&fit=crop" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" alt="Tiramisu">
+                    </div>
+                    <h3 class="text-lg serif mb-2">VAL Tiramisu</h3>
+                    <span class="text-sm italic-serif font-bold">38k</span>
+                </div>
+                <div class="group bg-white p-10 hover:bg-beige/20 transition-all duration-700">
+                    <div class="aspect-square mb-8 overflow-hidden">
+                        <img src="https://i.pinimg.com/1200x/39/8a/47/398a472bfb91de46b5b3aaca799b1524.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" alt="Cheesecake">
+                    </div>
+                    <h3 class="text-lg serif mb-2">Lemon Cheese</h3>
+                    <span class="text-sm italic-serif font-bold">35k</span>
+                </div>
+                <div class="group bg-white p-10 hover:bg-beige/20 transition-all duration-700">
+                    <div class="aspect-square mb-8 overflow-hidden">
+                        <img src="https://i.pinimg.com/1200x/5c/a6/90/5ca690cd636cec33182e2ecadc955792.jpg" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000" alt="Lava Cake">
+                    </div>
+                    <h3 class="text-lg serif mb-2">Lava Cake</h3>
+                    <span class="text-sm italic-serif font-bold">32k</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="py-32 bg-zinc-50">
+        <div class="max-w-5xl mx-auto px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
+                <div class="reveal-on-scroll">
+                    <h3 class="text-sm uppercase tracking-[0.4em] mb-12 text-accent pb-4 border-b border-accent/20">The Beans</h3>
+                    <div class="space-y-10">
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <h4 class="text-xl serif">Quiet Latte</h4>
+                                <p class="text-xs opacity-50 italic">Signature creamy blend</p>
+                            </div>
+                            <div class="flex-grow border-b border-dotted border-gray-300 mb-1 mx-2"></div>
+                            <span class="serif">28</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <h4 class="text-xl serif">Still Americano</h4>
+                                <p class="text-xs opacity-50 italic">Pure Arabica origins</p>
+                            </div>
+                            <div class="flex-grow border-b border-dotted border-gray-300 mb-1 mx-2"></div>
+                            <span class="serif">22</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal-on-scroll" style="transition-delay: 200ms;">
+                    <h3 class="text-sm uppercase tracking-[0.4em] mb-12 text-accent pb-4 border-b border-accent/20">Beyond Coffee</h3>
+                    <div class="space-y-10">
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <h4 class="text-xl serif">Earl Grey Tea</h4>
+                                <p class="text-xs opacity-50 italic">Bergamot scented</p>
+                            </div>
+                            <div class="flex-grow border-b border-dotted border-gray-300 mb-1 mx-2"></div>
+                            <span class="serif">28</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <div>
+                                <h4 class="text-xl serif">Salted Brownies</h4>
+                                <p class="text-xs opacity-50 italic">Fudgy sea salt dark choco</p>
+                            </div>
+                            <div class="flex-grow border-b border-dotted border-gray-300 mb-1 mx-2"></div>
+                            <span class="serif">25</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-32 bg-beige/30">
+        <div class="max-w-6xl mx-auto px-8">
+            <h2 class="text-4xl serif mb-24 text-center reveal-on-scroll text-dark-brown">Stories From <span class="italic-serif">The Bar</span></h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-24">
+                <!-- Row 1 -->
+                <div class="reveal-on-scroll">
+                    <div class="rating-star text-xl mb-4">★★★★★</div>
+                    <p class="text-sm italic-serif leading-relaxed mb-6 review-text">"Tempat persembunyian terbaik saat butuh ketenangan dan inspirasi."</p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-px bg-accent/30"></div>
+                        <div class="text-[10px] font-medium uppercase tracking-widest text-dark-brown/60">Adinda S.</div>
+                    </div>
+                </div>
+                <div class="reveal-on-scroll" style="transition-delay: 150ms;">
+                    <div class="rating-star text-xl mb-4">★★★★★</div>
+                    <p class="text-sm italic-serif leading-relaxed mb-6 review-text">"Estetika minimalisnya berpadu sempurna dengan kualitas rasa kopinya."</p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-px bg-accent/30"></div>
+                        <div class="text-[10px] font-medium uppercase tracking-widest text-dark-brown/60">Julian R.</div>
+                    </div>
+                </div>
+                <div class="reveal-on-scroll" style="transition-delay: 300ms;">
+                    <div class="rating-star text-xl mb-4">★★★★★</div>
+                    <p class="text-sm italic-serif leading-relaxed mb-6 review-text">"Sea Salt Caramel Latte di sini adalah standar baru bagi saya."</p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-px bg-accent/30"></div>
+                        <div class="text-[10px] font-medium uppercase tracking-widest text-dark-brown/60">Marsha W.</div>
+                    </div>
+                </div>
+                <!-- Row 2 -->
+                <div class="reveal-on-scroll" style="transition-delay: 100ms;">
+                    <div class="rating-star text-xl mb-4">★★★★★</div>
+                    <p class="text-sm italic-serif leading-relaxed mb-6 review-text">"Rasa croissant yang sangat otentik dan tekstur yang renyah."</p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-px bg-accent/30"></div>
+                        <div class="text-[10px] font-medium uppercase tracking-widest text-dark-brown/60">Kevin H.</div>
+                    </div>
+                </div>
+                <div class="reveal-on-scroll" style="transition-delay: 250ms;">
+                    <div class="rating-star text-xl mb-4">★★★★★</div>
+                    <p class="text-sm italic-serif leading-relaxed mb-6 review-text">"Pelayanan ramah dan barista sangat paham tentang profil kopi."</p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-px bg-accent/30"></div>
+                        <div class="text-[10px] font-medium uppercase tracking-widest text-dark-brown/60">Siti Aminah</div>
+                    </div>
+                </div>
+                <div class="reveal-on-scroll" style="transition-delay: 400ms;">
+                    <div class="rating-star text-xl mb-4">★★★★★</div>
+                    <p class="text-sm italic-serif leading-relaxed mb-6 review-text">"Interior yang tenang, sangat cocok untuk fokus bekerja atau membaca."</p>
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-px bg-accent/30"></div>
+                        <div class="text-[10px] font-medium uppercase tracking-widest text-dark-brown/60">Rangga P.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+            <div class="mb-12 md:mb-0">
+                <span class="text-4xl font-semibold serif tracking-tighter block mb-4">VAL</span>
+                <p class="text-xs uppercase tracking-[0.5em] opacity-40 italic">Less Noise, Better Coffee.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-16 text-[10px] uppercase tracking-[0.3em] font-bold">
+                <div class="flex flex-col space-y-4">
+                    <span class="opacity-30">Sosial Media</span>
+                    <a href="https://instagram.com" target="_blank" class="hover:text-accent transition-colors">Instagram</a>
+                    <a href="https://tiktok.com" target="_blank" class="hover:text-accent transition-colors">TikTok</a>
+                </div>
+                <div class="flex flex-col space-y-4">
+                    <span class="opacity-30">Kunjungi</span>
+                    <a href="https://maps.google.com/?q=Coffee+Shop+Terdekat" target="_blank" class="hover:text-accent transition-colors">Find Us</a>
+                    <a href="https://wa.me/6282338916539" target="_blank" class="hover:text-accent transition-colors">Reservasi</a>
+                </div>
+                <div class="flex flex-col space-y-4 hidden md:flex">
+                    <span class="opacity-30">Legal</span>
+                    <a href="#" class="hover:text-accent transition-colors">Privasi</a>
+                    <a href="#" class="hover:text-accent transition-colors">Kontak</a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-20 pt-8 border-t border-gray-50 text-center">
+            <p class="text-[9px] uppercase tracking-widest opacity-30">© 2024 VAL Coffee Atelier. Seluruh Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <script>
+        const reveals = document.querySelectorAll(".reveal-on-scroll");
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add("active");
+            });
+        }, observerOptions);
+        reveals.forEach(reveal => revealObserver.observe(reveal));
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 100) {
+                nav.classList.add('nav-glass', 'py-4', 'shadow-sm');
+                nav.classList.remove('py-6');
+            } else {
+                nav.classList.remove('nav-glass', 'py-4', 'shadow-sm');
+                nav.classList.add('py-6');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
